@@ -13,7 +13,8 @@ Here's my summary of what to do:
 
 
 do a basic setup in wizard Wan+2Lan2
-set second lan to 192.168.4.1
+deselect One Lan (only use one Lan),
+set secondary lan to 192.168.4.1
 and Lan (switch) to 192.168.3.1
 save
 reboot
@@ -22,7 +23,7 @@ reboot
 
 2: Remove switch
 
-Select switch and set no address
+Select switch Actions button on main dashboard, on dropdown menu select config, and set no address
 and in VLan tab deselect 2,3,4.
 save
 edit eth2 and add manual address 192.168.3.1/24
