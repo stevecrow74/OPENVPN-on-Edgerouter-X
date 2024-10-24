@@ -69,8 +69,6 @@ set firewall modify OPENVPN_ROUTE rule 10 description 'traffic from IoT to vtun0
 set firewall modify OPENVPN_ROUTE rule 10 source address 192.168.3.0/24
 set firewall modify OPENVPN_ROUTE rule 10 modify table 1
 set interfaces ethernet eth2 firewall in modify OPENVPN_ROUTE
-set interfaces ethernet eth3 firewall in modify OPENVPN_ROUTE
-set interfaces ethernet eth4 firewall in modify OPENVPN_ROUTE
 commit
 save
 </code>
