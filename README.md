@@ -59,7 +59,7 @@ the text file shoule have two lines that you use to login to your vpn service.
 
 ssh into the router either with Putty or CLi on the Gui interface.
 type: 
-
+<code>
 configure
 set interfaces openvpn vtun0 config-file /config/VPN.ovpn
 commit
@@ -72,7 +72,7 @@ set interfaces ethernet eth3 firewall in modify OPENVPN_ROUTE
 set interfaces ethernet eth4 firewall in modify OPENVPN_ROUTE
 commit
 save
-
+</code>
 
 
 6: finish up
