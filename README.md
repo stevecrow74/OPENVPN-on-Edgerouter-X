@@ -18,7 +18,7 @@ reboot
 
 2: Remove switch
 Select switch and set no address
-and in VLan tab remove deselect 2,3,4.
+and in VLan tab deselect 2,3,4.
 save
 edit eth2 and add manual address 192.168.3.1/24
 save
