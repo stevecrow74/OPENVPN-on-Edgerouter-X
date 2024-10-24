@@ -10,26 +10,37 @@ As I said it took me a while to figure it out, and the Webpage that was supposed
 Here's my summary of what to do:
 
 1: Setup
+
+
 do a basic setup in wizard Wan+2Lan2
 set second lan to 192.168.4.1
 and Lan (switch) to 192.168.3.1
 save
 reboot
 
+
+
 2: Remove switch
+
 Select switch and set no address
 and in VLan tab deselect 2,3,4.
 save
 edit eth2 and add manual address 192.168.3.1/24
 save
 
+
+
 3: DNS
+
 go to the Services Tab and into DNS tab.
 remove switch
 add eth2 
 save
 
+
+
 4: WinSCP
+
 you need to edit a few lines to the .ovpn file
 below client add the line:
 route-nopull
@@ -41,7 +52,10 @@ the text file shoule have two lines that you use to login to your vpn service.
 "your username"
 "your password"
 
+
+
 5: SSH
+
 ssh into the router either with Putty or CLi on the Gui interface.
 type: 
 
@@ -58,7 +72,10 @@ set interfaces ethernet eth4 firewall in modify OPENVPN_ROUTE
 commit
 save
 
+
+
 6: finish up
+
 In the Gui, select firewall/Nat tab
 then select Nat tab
 Add Source NAT Rule
