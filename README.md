@@ -58,6 +58,7 @@ the text file shoule have two lines that you use to login to your vpn service.
 5: SSH
 
 ssh into the router either with Putty or CLi on the Gui interface.
+
 type: 
 <code>
 configure
