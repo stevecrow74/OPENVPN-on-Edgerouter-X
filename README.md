@@ -60,8 +60,8 @@ the text file shoule have two lines that you use to login to your vpn service.
 ssh into the router either with Putty or CLi on the Gui interface.
 
 type: 
-<code>
-configure
+
+<code>configure
 set interfaces openvpn vtun0 config-file /config/VPN.ovpn
 commit
 set protocols static table 1 interface-route 0.0.0.0/0 next-hop-interface vtun0
