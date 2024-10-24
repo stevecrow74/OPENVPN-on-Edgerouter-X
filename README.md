@@ -29,8 +29,53 @@ remove switch
 add eth2 
 save
 
-4: SSH
+4: WinSCP
+you need to edit a few lines to the .ovpn file
+below client add the line:
+route-nopull
+then add to the line 
+auth-user-pass /config/auth/vpn.txt  (make sure you poing to the file as it is case sensative)
+add the .ovpn file to the /config/ directory
+and the password .txt file to the /config/auth/ directory
+the text file shoule have two lines that you use to login to your vpn service.
+"your username"
+"your password"
+
+5: SSH
 ssh into the router either with Putty or CLi on the Gui interface.
 type: 
+
 configure
-set protocols static table1 interface route 0.0.0.0 nexthop interface vtun0
+set interfaces openvpn vtun0 config-file /config/VPN.ovpn
+commit
+set protocols static table 1 interface-route 0.0.0.0/0 next-hop-interface vtun0
+set firewall modify OPENVPN_ROUTE rule 10 description 'traffic from IoT to vtun0'
+set firewall modify OPENVPN_ROUTE rule 10 source address 192.168.3.0/24
+set firewall modify OPENVPN_ROUTE rule 10 modify table 1
+set interfaces ethernet eth2 firewall in modify OPENVPN_ROUTE
+set interfaces ethernet eth3 firewall in modify OPENVPN_ROUTE
+set interfaces ethernet eth4 firewall in modify OPENVPN_ROUTE
+commit
+save
+
+6: finish up
+In the Gui, select firewall/Nat tab
+then select Nat tab
+Add Source NAT Rule
+edit description "masquerade for VPN"
+Outbound Interface- vtun0
+Src Address- 192.168.3.0/24
+save
+
+
+
+
+There are Firewall rules I have left out, The above will get one port eth1 as a seperate network (handy for a wireless hub) 
+andone port eth2 that will run through an OpenVPN connection.
+
+Also to note, some VPN service providers need a .crt file to work with OpenVPN, if it requires this file add it to the /config/directory in step4.
+
+
+This works for me and I hope you have the same success.
+
+for more detail see https://www.youtube.com/@gregpakes5253
